@@ -41,7 +41,7 @@ async function handleSearch(event) {
 
 async function getMovies(title) {
   const moviesRaw = await fetch(
-    `http://www.omdbapi.com/?apikey=ad46143b&s=${title}`,
+    `https://www.omdbapi.com/?apikey=ad46143b&s=${title}`,
   );
   const moviesRes = await moviesRaw.json();
   return moviesRes.Search;
