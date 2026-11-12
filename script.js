@@ -3,6 +3,14 @@ const resultsInfo = document.querySelector("#resultsInfo");
 let moviesDefaultSort;
 let query;
 
+function showLoading() {
+  moviesGrid.classList += " movies--loading";
+}
+
+function hideLoading() {
+  moviesGrid.classList.remove("movies--loading");
+}
+
 function sortMovies(event) {
   if (!moviesDefaultSort) return;
   event.preventDefault();
@@ -24,8 +32,10 @@ function sortMovies(event) {
 
 async function handleSearch(event) {
   event.preventDefault();
+  showLoading();
   query = event.target.searchQuery.value;
   moviesDefaultSort = await getMovies(query);
+  hideLoading();
   renderMovies(moviesDefaultSort, query);
 }
 
